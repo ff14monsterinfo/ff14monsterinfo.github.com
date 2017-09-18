@@ -1,0 +1,1 @@
+# ff14monsterinfo.github.com
