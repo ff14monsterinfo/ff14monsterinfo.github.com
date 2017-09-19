@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>파이널 판타지14 마물 위치 정보</title>
+ 
+<link rel="stylesheet" href="./jqueryMobile/jquery.mobile-1.4.5/jquery.mobile-1.4.5.css">
+<script src="./jquery/jquery-1.11.0.js"></script>
+<script src="./jqueryMobile/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script><!--검색 정보 실시간 보기-->
+<script src="./jquery/ff14_monsterinfo.js"></script>
+</head>
+
+<body onLoad="preloadImages()">
+	<!-- <header data-role="header" data-position="fixed" data-fullscreen="false">-->
+    <header data-role="header"><h1>마물 위치 정보 </br>커르다스 서부고지</h1>
+		<a href="#menuPanel" data-icon="bullets" data-iconpos="notext" style="margin-top:10px; margin-left:5px">Add</a>
+		<a href="index.html" data-icon="home" data-iconpos="notext" data-position="right" style="margin-top:10px; margin-right:5px" data-ajax="false">Home</a>
+	</header>                   
+    <div class="content" data-role="content" style="text-align:center; overflow:auto">
+	<div style="display:inline-block;">
+		<div style="float:left; padding-top:20px; padding-right:20px;">
+			<center>
+				<a class="btn_open"><img src="image/map/Coerthas_Weastern_Highlands.jpg" id="map_img" usemap="#Coerthas_Weastern_Highlands" name="Coerthas_Weastern_Highlands"/></a></br>
+				<a href="#" class="btn_close">
+					<div id="layer_pop"><div class="pop_cont"><img src="image/map/Coerthas_Weastern_Highlands.jpg"/></div></div>
+				</a>
+			</center>
+		</div>
+	<div style="float:left;">
+	<center>
+	<input type="text" id="txtFilter" onkeyup="{filter();return false}" onkeypress="javascript:if(event.keyCode==13){ filter(); return false;}"
+					placeholder="'마물 이름 / 레벨 / 드랍 아이템'으로 검색가능합니다.">
+			<table class="mtable" width="500px">
+				<thead>
+					<tr bgcolor="#D5D5D5">
+						<th width="32%;">마물</th>
+						<th width="23%;">좌표</th>
+						<th width="15%;">레벨</th>
+						<th width="30%;">드랍 아이템</th>
+					</tr>
+				</thead>
+				<tbody id="m_body">
+					<tr name="크루제||Lv.60||-" bgcolor="#F6F6F6" onclick="changeImages('Coerthas_Weastern_Highlands', 'image/map/B/Kruse.gif'); return true;" 
+						onMouseOver="changeImages('Coerthas_Weastern_Highlands', 'image/map/B/Kruse.gif'); return true;" onMouseOut="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands.jpg'); return true;">
+						<td><a href="info/B/Kruse.html" data-ajax="false"><font color="#00b566">크루제</font></a></td><td>지도 및</br>상세 페이지 참조</td><td>Lv.60</td><td>-</td>
+					</tr>
+					<tr name="알티크||Lv.60||-" bgcolor="#FFFFFF" onclick="changeImages('Coerthas_Weastern_Highlands', 'image/map/B/Alteak.gif'); return true;" 
+						onMouseOver="changeImages('Coerthas_Weastern_Highlands', 'image/map/B/Alteak.gif'); return true;" onMouseOut="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands.jpg'); return true;">
+						<td><a href="info/B/Alteak.html" data-ajax="false"><font color="#00b566">알티크</font></a></td><td>지도 및</br>상세 페이지 참조</td><td>Lv.60</td><td>-</td>
+					</tr>
+					<tr name="베르그투르스||Lv.50||-" bgcolor="#F6F6F6" onclick="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/Bergthurs.gif'); return true;" 
+						onMouseOver="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/Bergthurs.gif'); return true;" onMouseOut="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands.jpg'); return true;">
+						<td><a href="info/Coerthas_Western_Highlands/Bergthurs.html" data-ajax="false">베르그투르스</a></td><td>(X: 34, Y: 24)</td><td>Lv.50</td><td>-</td>
+					</tr>
+					<tr name="산악 영양||Lv.50||-" bgcolor="#FFFFFF" onclick="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/Steinbock.gif'); return true;" 
+						onMouseOver="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/Steinbock.gif'); return true;" onMouseOut="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands.jpg'); return true;">
+						<td><a href="info/Coerthas_Western_Highlands/Steinbock.html" data-ajax="false">산악 영양</a></td><td>(X: 30, Y: 32)</td><td>Lv.50</td><td>-</td>
+					</tr>
+					<tr name="서리 그리네이드||Lv.50||-"bgcolor="#F6F6F6" onclick="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/FrostGrenade.gif'); return true;" 
+						onMouseOver="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/FrostGrenade.gif'); return true;" onMouseOut="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands.jpg'); return true;">
+						<td><a href="info/Coerthas_Western_Highlands/FrostGrenade.html" data-ajax="false">서리 그레네이드</a></td><td>(X: 28, Y: 12)</td><td>Lv.50</td><td>-</td>
+					</tr>
+					<tr name="은빛 늑대||Lv.50||-"bgcolor="#FFFFFF" onclick="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/SilverWolf.gif'); return true;" 
+						onMouseOver="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/SilverWolf.gif'); return true;" onMouseOut="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands.jpg'); return true;">
+						<td><a href="info/Coerthas_Western_Highlands/SilverWolf.html" data-ajax="false">은빛 늑대</a></td><td>(X: 26, Y: 24)</td><td>Lv.50</td><td>-</td>
+					</tr>
+					<tr name="고지대 밀로돈||Lv.50||-" bgcolor="#F6F6F6" onclick="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/UplandMylodon.gif'); return true;" 
+						onMouseOver="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/UplandMylodon.gif'); return true;" onMouseOut="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands.jpg'); return true;">
+						<td><a href="info/Coerthas_Western_Highlands/UplandMylodon.html" data-ajax="false">고지대 밀로돈</a></td><td>(X: 31, Y: 20)</td><td>Lv.50</td><td>-</td>
+					</tr>
+					<tr name="볼록눈||Lv 50||볼록눈의 눈물" bgcolor="#FFFFFF" onclick="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/Deepeye.gif'); return true;" 
+						onMouseOver="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/Deepeye.gif'); return true;" onMouseOut="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands.jpg'); return true;">
+						<td><a href="info/Coerthas_Western_Highlands/Deepeye.html" data-ajax="false">볼록눈</a></td><td>(X : 30, Y : 31)</td><td>Lv.50</td><td>볼록눈의 눈물</td>
+					</tr>
+					<tr name="난도질 조브란||Lv.50||-" bgcolor="#F6F6F6" onclick="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/SlushZoblyn.gif'); return true;" 
+						onMouseOver="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/SlushZoblyn.gif'); return true;" onMouseOut="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands.jpg'); return true;">
+						<td><a href="info/Coerthas_Western_Highlands/SlushZoblyn.html" data-ajax="false">난도질 조브란</a></td><td>(X: 25, Y: 12)</td><td>Lv.50</td><td>-</td>
+					</tr>
+					<tr name="얼음풀||Lv.50||얼음풀 잎" bgcolor="#FFFFFF" onclick="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/Icetrap.gif'); return true;" 
+						onMouseOver="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/Icetrap.gif'); return true;" onMouseOut="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands.jpg'); return true;">
+						<td><a href="info/Coerthas_Western_Highlands/Icetrap.html" data-ajax="false">얼음풀</a></td><td>(X: 23, Y: 16)</td><td>Lv.50</td><td>얼음풀 잎</td>
+					</tr>
+					<tr name="찬바람 달마수리||Lv.50||-" bgcolor="#F6F6F6" onclick="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/ColdwindBateleur.gif'); return true;" 
+						onMouseOver="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/ColdwindBateleur.gif'); return true;" onMouseOut="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands.jpg'); return true;">
+						<td><a href="info/Coerthas_Western_Highlands/ColdwindBateleur.html" data-ajax="false">찬바람 달마수리</a></td><td>(X: 31, Y: 11)</td><td>Lv.50</td><td>-</td>
+					</tr>
+					<tr name="아르케오니스||Lv.51||아르케오니스 생가죽" bgcolor="#FFFFFF" onclick="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/Archaeornis.gif'); return true;" 
+						onMouseOver="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/Archaeornis.gif'); return true;" onMouseOut="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands.jpg'); return true;">
+						<td><a href="info/Coerthas_Western_Highlands/Archaeornis.html" data-ajax="false">아르케오니스</a></td><td>(X: 14, Y: 7)</td><td>Lv.51</td><td>아르케오니스 생가죽</td>
+					</tr>
+					<tr name="털복숭이 야크||Lv.51||야크 젖" bgcolor="#F6F6F6" onclick="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/WoolyYak.gif'); return true;" 
+						onMouseOver="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/WoolyYak.gif'); return true;" onMouseOut="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands.jpg'); return true;">
+						<td><a href="info/Coerthas_Western_Highlands/WoolyYak.html" data-ajax="false">털복숭이 야크</a></td><td>(X: 15, Y: 17)</td><td>Lv.51</td><td>야크 젖</td>
+					</tr>
+					<tr name="북극곰||Lv.51||-" bgcolor="#FFFFFF" onclick="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/PolarBear.gif'); return true;" 
+						onMouseOver="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/PolarBear.gif'); return true;" onMouseOut="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands.jpg'); return true;">
+						<td><a href="info/Coerthas_Western_Highlands/PolarBear.html" data-ajax="false">북극곰</a></td><td>(X: 22, Y: 21)</td><td>Lv.51</td><td>-</td>
+					</tr>
+					<tr name="외로운 예티||Lv.51||예티 엄니" bgcolor="#F6F6F6" onclick="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/LoneYeti.gif'); return true;" 
+						onMouseOver="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/LoneYeti.gif'); return true;" onMouseOut="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands.jpg'); return true;">
+						<td><a href="info/Coerthas_Western_Highlands/LoneYeti.html" data-ajax="false">외로운 예티</a></td><td>(X: 19, Y: 29)</td><td>Lv.51</td><td>예티 엄니</td>
+					</tr>
+					<tr name="얼음 지휘관||Lv.51||-" bgcolor="#FFFFFF" onclick="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/IceCommander.gif'); return true;" 
+						onMouseOver="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/IceCommander.gif'); return true;" onMouseOut="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands.jpg'); return true;">
+						<td><a href="info/Coerthas_Western_Highlands/IceCommander.html" data-ajax="false">얼음 지휘관</a></td><td>(X: 10, Y: 14)</td><td>Lv.51</td><td>-</td>
+					</tr>
+					<tr name="젤라토||Lv.51||젤라토 살" bgcolor="#F6F6F6" onclick="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/Gelato.gif'); return true;" 
+						onMouseOver="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/Gelato.gif'); return true;" onMouseOut="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands.jpg'); return true;">
+						<td><a href="info/Coerthas_Western_Highlands/Gelato.html" data-ajax="false">젤라토</a></td><td>(X: 11, Y: 17)</td><td>Lv.51</td><td>젤라토 살</td>
+					</tr>
+					<tr name="진물||Lv.51||-" bgcolor="#FFFFFF" onclick="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/Rheum.gif'); return true;" 
+						onMouseOver="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/Rheum.gif'); return true;" onMouseOut="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands.jpg'); return true;">
+						<td><a href="info/Coerthas_Western_Highlands/Rheum.html" data-ajax="false">진물</a></td><td>(X: 16, Y: 20)</td><td>Lv.51</td><td>-</td>
+					</tr>
+					<tr name="윈드두르스||Lv.56||오거의 뿔" bgcolor="#F6F6F6" onclick="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/Vindthurs.gif'); return true;" 
+						onMouseOver="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/Vindthurs.gif'); return true;" onMouseOut="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands.jpg'); return true;">
+						<td><a href="info/Coerthas_Western_Highlands/Vindthurs.html" data-ajax="false">윈드두르스</a></td><td>(X: 9, Y: 9)</td><td>Lv.56</td><td>오거의 뿔</td>
+					</tr>
+					<tr name="내륙 투르수스||Lv.56||-" bgcolor="#FFFFFF" onclick="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/InlandTursus.gif'); return true;" 
+						onMouseOver="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/InlandTursus.gif'); return true;" onMouseOut="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands.jpg'); return true;">
+						<td><a href="info/Coerthas_Western_Highlands/InlandTursus.html" data-ajax="false">내륙 투르수스</a></td><td>(X: 31, Y: 8)</td><td>Lv.56</td><td>-</td>
+					</tr>
+					<tr name="대형 아르케오니스||Lv.56||아르케오니스 생가죽" bgcolor="#F6F6F6" onclick="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/GrandArchaeonis.gif'); return true;" 
+						onMouseOver="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/GrandArchaeonis.gif'); return true;" onMouseOut="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands.jpg'); return true;">
+						<td><a href="info/Coerthas_Western_Highlands/GrandArchaeonis.html" data-ajax="false">대형 아르케오니스</a></td><td>(X: 35, Y: 18)</td><td>Lv.56</td><td>아르케오니스 생가죽</td>
+					</tr>
+					<tr name="소르베||Lv.56||젤라토 살" bgcolor="#FFFFFF" onclick="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/Sorbet.gif'); return true;" 
+						onMouseOver="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/Sorbet.gif'); return true;" onMouseOut="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands.jpg'); return true;">
+						<td><a href="info/Coerthas_Western_Highlands/Sorbet.html" data-ajax="false">소르베</a></td><td>(X: 16, Y: 26)</td><td>Lv.56</td><td>젤라토 살</td>
+					</tr>
+					<tr name="점판암 예티|Lv.56||예티 엄니" bgcolor="#F6F6F6" onclick="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/SlateYeti.gif'); return true;" 
+						onMouseOver="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/SlateYeti.gif'); return true;" onMouseOut="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands.jpg'); return true;">
+						<td><a href="info/Coerthas_Western_Highlands/SlateYeti.html" data-ajax="false">점판암 예티</a></td><td>(X: 25, Y: 32)</td><td>Lv.56</td><td>예티 엄니</td>
+					</tr>
+					<tr name="빙결 드래곤||Lv.56||드래곤 생가죽||드래곤 송곳니||용족의 피||드래곤의 비늘" bgcolor="#FFFFFF" onclick="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/IceDragon.gif'); return true;" 
+						onMouseOver="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/IceDragon.gif'); return true;" onMouseOut="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands.jpg'); return true;">
+						<td><a href="info/Coerthas_Western_Highlands/IceDragon.html" data-ajax="false">빙결 드래곤</a></td><td>(X: 14, Y: 24)</td><td>Lv.56</td><td>드래곤 생가죽</br>드래곤 송곳니</br>용족의 피</br>드래곤의 비늘</td>
+					</tr>
+					<tr name="얼음 조브란|Lv.56||-" bgcolor="#F6F6F6" onclick="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/IceZoblyn.gif'); return true;" 
+						onMouseOver="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands/IceZoblyn.gif'); return true;" onMouseOut="changeImages('Coerthas_Weastern_Highlands', 'image/map/Coerthas_Weastern_Highlands.jpg'); return true;">
+						<td><a href="info/Coerthas_Western_Highlands/IceZoblyn.html" data-ajax="false">얼음 조브란</a></td><td>(X: 15, Y: 33)</td><td>Lv.56</td><td>-</td>
+					</tr>
+				</tbody>
+			</table>
+		</center>
+		</div>
+		</div>
+		</div>
+    <footer data-role="footer" data-position="fixed"><center>contact me : <a href="http://jaicy.tistory.com" target="_blank" data-ajax="false">jaicy.tistory.com</a></center></footer>
+		 <div data-role="panel" id="menuPanel" data-position="left" data-display="overlay" data-theme="a">
+		   </br>
+		   <ul data-role="listview">
+			<div style="text-align:right; margin-right:5px; padding-bottom:30px">
+				<a href="#" data-rel="close"><img src="./jqueryMobile/jquery.mobile-1.4.5/carat-l.png"/></a>
+			</div>
+		    <li data-role="collapsible" data-inset="false" data-iconpos="right">
+                <h2>라노시아</h2>
+                <ul data-role="listview" data-theme="b">
+                     <li><a href="Outher_La_Noscea.html" data-ajax="false">외지 라노시아</a></li>
+                     <li><a href="Upper_La_Noscea.html" data-ajax="false">고지 라노시아</a></li>
+                     <li><a href="Eastern_La_Noscea.html" data-ajax="false">동부 라노시아</a></li>
+					 <li><a href="Western_La_Noscea.html" data-ajax="false">서부 라노시아</a></li>
+					 <li><a href="Lower_La_Noscea.html" data-ajax="false">저지 라노시아</a></li>
+                </ul>
+            </li>
+			<li data-role="collapsible" data-inset="false" data-iconpos="right">
+                <h2>검은장막 숲</h2>
+                <ul data-role="listview" data-theme="b">
+                     <li><a href="North_Shroud.html" data-ajax="false">검은장막 숲 북부삼림</a></li>
+                     <li><a href="Central_Shroud.html" data-ajax="false">검은장막 숲 중부삼림</a></li>
+                     <li><a href="East_Shroud.html" data-ajax="false">검은장막 숲 동부삼림</a></li>
+					 <li><a href="South_Shroud.html" data-ajax="false">검은장막 숲 남부삼림</a></li>
+                </ul>
+            </li>
+			<li data-role="collapsible" data-inset="false" data-iconpos="right">
+                <h2>다날란</h2>
+                <ul data-role="listview" data-theme="b">
+                     <li><a href="Northern_Thanalan.html" data-ajax="false">북부 다날란</a></li>
+                     <li><a href="Central_Thanalan.html" data-ajax="false">중부 다날란</a></li>
+                     <li><a href="Eastern_Thanalan.html" data-ajax="false">동부 다날란</a></li>
+					 <li><a href="Western_Thanalan.html" data-ajax="false">서부 다날란</a></li>
+					 <li><a href="Southern_Thanalan.html" data-ajax="false">남부 다날란</a></li>
+				</ul>
+            </li>
+			<li data-role="collapsible" data-inset="false" data-iconpos="right">
+                <h2>커르다스</h2>
+                <ul data-role="listview" data-theme="b">
+                     <li><a href="Coerthas_Central_Highlands.html" data-ajax="flase">커르다스 중앙고지</a></li>
+                     <li><a href="Coerthas_Western_Highlands.html" data-ajax="false">커르다스 서부고지</a></li>
+                </ul>
+            </li>
+			<li>
+				<a href="Mor_Dhona.html" data-ajax="false">모르도나</a>
+            </li>
+			<li data-role="collapsible" data-inset="false" data-iconpos="right">
+                <h2>아발라시아</h2>
+                <ul data-role="listview" data-theme="b">
+                     <li><a href="Sea_of_Clouds.html" data-ajax="false">아발라시아 구름바다</a></li>
+                     <li><a href="Azys_Lla.html" data-ajax="false">아지스 라</a></li>
+                </ul>
+            </li>
+			<li data-role="collapsible" data-inset="false" data-iconpos="right">
+                <h2>드라바니아</h2>
+                <ul data-role="listview" data-theme="b">
+                     <li><a href="The_Churning_Mists.html" data-ajax="false">드라바니아 구름바다</a></li>
+                     <li><a href="Dravanian_Forelands.html" data-ajax="false">고지 드라바니아</a></li>
+					 <li><a href="The_Dravanian_Hinterlands.html" data-ajax="false">저지 드라바니아</a></li>
+                </ul>
+            </li>
+			</ul>
+		</div>
+</body>
+</html>

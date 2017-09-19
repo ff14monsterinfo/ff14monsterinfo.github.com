@@ -1,0 +1,275 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>파이널 판타지14 마물 위치 정보</title>
+ 
+<link rel="stylesheet" href="./jqueryMobile/jquery.mobile-1.4.5/jquery.mobile-1.4.5.css">
+<script src="./jquery/jquery-1.11.0.js"></script>
+<script src="./jqueryMobile/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script><!--검색 정보 실시간 보기-->
+<script src="./jquery/ff14_monsterinfo.js"></script>
+</head>
+
+<body onLoad="preloadImages()">
+	<!-- <header data-role="header" data-position="fixed" data-fullscreen="false">-->
+    <header data-role="header"><h1>마물 위치 정보 </br>아발라시아 구름바다</h1>
+		<a href="#menuPanel" data-icon="bullets" data-iconpos="notext" style="margin-top:10px; margin-left:5px">Add</a>
+		<a href="index.html" data-icon="home" data-iconpos="notext" data-position="right" style="margin-top:10px; margin-right:5px" data-ajax="false">Home</a>
+	</header>                   
+    <div class="content" data-role="content" style="text-align:center; overflow:auto">
+	<div style="display:inline-block;">
+		<div style="float:left; padding-top:20px; padding-right:20px;">
+			<center>
+				<a class="btn_open"><img src="image/map/Sea_of_Clouds.jpg" id="map_img" usemap="#Sea_of_Clouds" name="Sea_of_Clouds"/></a></br>
+				<a href="#" class="btn_close">
+					<div id="layer_pop"><div class="pop_cont"><img src="image/map/Sea_of_Clouds.jpg"/></div></div>
+				</a>
+			</center>
+		</div>
+	<div style="float:left;">
+	<center>
+	<input type="text" id="txtFilter" onkeyup="{filter();return false}" onkeypress="javascript:if(event.keyCode==13){ filter(); return false;}"
+					placeholder="'마물 이름 / 레벨 / 드랍 아이템'으로 검색가능합니다.">
+			<table class="mtable" width="500px">
+				<thead>
+					<tr bgcolor="#D5D5D5">
+						<th width="32%;">마물</th>
+						<th width="23%;">좌표</th>
+						<th width="15%;">레벨</th>
+						<th width="30%;">드랍 아이템</th>
+					</tr>
+				</thead>
+				<tbody id="m_body">
+					<tr name="스퀑크||Lv.60||-" bgcolor="#F6F6F6" onclick="changeImages('Sea_of_Clouds', 'image/map/B/Squonk.gif''); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/B/Squonk.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/B/Squonk.html" data-ajax="false"><font color="#00b566">스퀑크</font></a></td><td>지도 및</br>상세 페이지 참조</td><td>Lv.60</td><td>-</td>
+					</tr>
+					<tr name="무용수 사누발리||Lv.60||-" bgcolor="#FFFFFF" onclick="changeImages('Sea_of_Clouds', 'image/map/B/DancerSanuBali.gif''); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/B/DancerSanuBali.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/B/DancerSanuBali.html" data-ajax="false"><font color="#00b566">무용수 사누발리</font></a></td><td>지도 및</br>상세 페이지 참조</td><td>Lv.60</td><td>-</td>
+					</tr>
+					<tr name="오브델라||Lv.50||-" bgcolor="#F6F6F6" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Obdella.gif''); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Obdella.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/Obdella.html" data-ajax="false">오브델라</a></td><td>(X: 29, Y: 30)</td><td>Lv.50</td><td>-</td>
+					</tr>
+					<tr name="구름지렁이||Lv.50||-" bgcolor="#FFFFFF" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Cloudworm.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Cloudworm.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/Cloudworm.html" data-ajax="false">구름지렁이</td><td>(X: 28, Y: 29)</td><td>Lv.50</td><td>-</td>
+					</tr>
+					<tr name="코노돈트||Lv.50||-"bgcolor="#F6F6F6" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Conodont.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Conodont.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/Conodont.html" data-ajax="false">코노돈트</td><td>(X: 27, Y: 30)</td><td>Lv.50</td><td>-</td>
+					</tr>
+					<tr name="파이싸||Lv.50||-"bgcolor="#FFFFFF" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Paissa.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Paissa.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/Paissa.html" data-ajax="false">파이싸</td><td>(X: 20, Y: 34)</td><td>Lv.50</td><td>-</td>
+					</tr>
+					<tr name="게일리캣||Lv.50||-" bgcolor="#F6F6F6" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Gaelicat.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Gaelicat.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/Gaelicat.html" data-ajax="false">게일리캣</td><td>(X: 11, Y: 33)</td><td>Lv.50</td><td>-</td>
+					</tr>
+					<tr name="가스토르니스||Lv.50||-" bgcolor="#FFFFFF" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Gastornis.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Gastornis.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/Gastornis.html" data-ajax="false">가스토르니스</td><td>(X: 11, Y: 33)</td><td>Lv.50</td><td>가스토르니스 알</td>
+					</tr>
+					<tr name="란라이 군두||Lv.51||-" bgcolor="#F6F6F6" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/LanlaiiGundu.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/LanlaiiGundu.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/LanlaiiGundu.html" data-ajax="false">란라이 군두</td><td>(X: 36, Y: 24)</td><td>Lv.51</td><td>-</td>
+					</tr>
+					<tr name="부크라이 군두||Lv.51||-" bgcolor="#FFFFFF" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/VuklaiiGundu.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/VuklaiiGundu.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/VuklaiiGundu.html" data-ajax="false">부크라이 군두</td><td>(X: 35, Y: 25)</td><td>Lv.51</td><td>-</td>
+					</tr>
+					<tr name="사누와||Lv.51||-" bgcolor="#F6F6F6" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Sanuwa.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Sanuwa.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/Sanuwa.html" data-ajax="false">사누와</td><td>(X: 36, Y: 24)</td><td>Lv.51</td><td>-</td>
+					</tr>
+					<tr name="나트라이 군두|Lv.51||-" bgcolor="#FFFFFF" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/NatlaiiGundu.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/NatlaiiGundu.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/NatlaiiGundu.html" data-ajax="false">나트라이 군두</td><td>(X: 36, Y: 20)</td><td>Lv.51</td><td>-</td>
+					</tr>
+					<tr name="코리건||Lv.56||-" bgcolor="#F6F6F6" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Korrigan.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Korrigan.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/Korrigan.html" data-ajax="false">코리건</td><td>(X: 20, Y: 30)</td><td>Lv.56</td><td>-</td>
+					</tr>
+					<tr name="달멜||Lv. 56||-" bgcolor="#FFFFFF" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Dhalmel.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Dhalmel.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/Dhalmel.html" data-ajax="false">달멜</td><td>(X: 19, Y: 30)</td><td>Lv.56</td><td>달멜 생가죽</br>달멜의 타액</br>달멜 고기</td>
+					</tr>
+					<tr name="교활한 파이싸||Lv.56||-" bgcolor="#F6F6F6" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/SlyPaissa.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/SlyPaissa.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/SlyPaissa.html" data-ajax="false">교활한 파이싸</td><td>(X: 14, Y: 30)</td><td>Lv.56</td><td>-</td>
+					</tr>
+					<tr name="큰뿔들소||Lv.56||-" bgcolor="#FFFFFF" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Wisent.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Wisent.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/Wisent.html" data-ajax="false">큰뿔들소</td><td>(X: 11, Y: 31)</td><td>Lv.56</td><td>-</td>
+					</tr>
+					<tr name="분두족 우상||Lv. 57||-" bgcolor="#F6F6F6" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/VunduTotems.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/VunduTotems.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/VunduTotems.html" data-ajax="false">분두족 우상</td><td>(X: 18, Y: 17)</td><td>Lv.57</td><td>-</td>
+					</tr>
+					<tr name="푸른하늘 와무라||Lv. 57||-" bgcolor="#FFFFFF" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/WindowWamoura.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/WindowWamoura.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/WindowWamoura.html" data-ajax="false">푸른하늘 와무라</td><td>(X: 10, Y: 17)</td><td>Lv.57</td><td>-</td>
+					</tr>
+					<tr name="푸른하늘 와무라 유충||Lv.57||-" bgcolor="#F6F6F6" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/WindowWamouracampa.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/WindowWamouracampa.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/WindowWamouracampa.html" data-ajax="false">푸른하늘 와무라 유충</td><td>(X: 9, Y: 16)</td><td>Lv.57</td><td>-</td>
+					</tr>
+					<tr name="땅지킴이||Lv.57||-" bgcolor="#FFFFFF" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Groundskeeper.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Groundskeeper.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/Groundskeeper.html" data-ajax="false">땅지킴이</td><td>(X: 23, Y: 9)</td><td>Lv.57</td><td>-</td>
+					</tr>
+					<tr name="아발라시아 솔개||Lv. 57||-" bgcolor="#F6F6F6" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/AbalathiaKite.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/AbalathiaKite.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/AbalathiaKite.html" data-ajax="false">아발라시아 솔개</td><td>(X: 6, Y: 22)</td><td>Lv.57</td><td>-</td>
+					</tr>
+					<tr name="엔디미온||Lv.57||-" bgcolor="#FFFFFF" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Endymion.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Endymion.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/Endymion.html" data-ajax="false">엔디미온</td><td>(X: 17, Y: 10)</td><td>Lv.57</td><td>-</td>
+					</tr>
+					<tr name="VI군단 야수투사||Lv.57||-" bgcolor="#F6F6F6" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/6thWildCombatant.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/6thWildCombatant.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/6thWildCombatant.html" data-ajax="false">VI군단 야수투사</td><td>(X: 31, Y: 14)</td><td>Lv.57</td><td>-</td>
+					</tr>
+					<tr name="VI군단 황제기수|Lv.57||-" bgcolor="#FFFFFF" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/6thEmperorLeader.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/6thEmperorLeader.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/6thEmperorLeader.html" data-ajax="false">VI군단 황제기수</td><td>(X: 31, Y: 14)</td><td>Lv.57</td><td>-</td>
+					</tr>
+					<tr name="VI군단 도끼투사||Lv.57||-" bgcolor="#F6F6F6" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/6thAxFighter.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/6thAxFighter.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/6thAxFighter.html" data-ajax="false">VI군단 도끼투사</td><td>(X: 31, Y: 14)</td><td>Lv.57</td><td>-</td>
+					</tr>
+					<tr name="VI군단 경보병|Lv.57||-" bgcolor="#FFFFFF" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/6thKern.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/6thKern.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/6thKern.html" data-ajax="false">VI군단 경보병</td><td>(X: 31, Y: 14)</td><td>Lv.57</td><td>-</td>
+					</tr>
+					<tr name="VI군단 중장투사|Lv.57||-" bgcolor="#F6F6F6" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/6thArmedFighter.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/6thArmedFighter.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/6thArmedFighter.html" data-ajax="false">VI군단 중장투사</td><td>(X: 31, Y: 14)</td><td>Lv.57</td><td>-</td>
+					</tr>
+					<tr name="사누와 분두|Lv.57||-" bgcolor="#FFFFFF" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/SanuwaVundu.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/SanuwaVundu.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/SanuwaVundu.html" data-ajax="false">사누와 분두</td><td>(X: 24, Y: 24)</td><td>Lv.57</td><td>-</td>
+					</tr>
+					<tr name="부크라이 분두|Lv.57||-" bgcolor="#F6F6F6" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/VuklaiiVundu.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/VuklaiiVundu.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/VuklaiiVundu.html" data-ajax="false">부크라이 분두</td><td>(X: 24, Y: 24)</td><td>Lv.57</td><td>-</td>
+					</tr>
+					<tr name="나트라이 분두|Lv.57||-" bgcolor="#FFFFFF" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/NatlaiiVundu.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/NatlaiiVundu.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/NatlaiiVundu.html" data-ajax="false">나트라이 분두</td><td>(X: 28, Y: 10)</td><td>Lv.57</td><td>-</td>
+					</tr>
+					<tr name="란라이 분두|Lv.57||-" bgcolor="#F6F6F6" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/LanlaiiVundu.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/LanlaiiVundu.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/LanlaiiVundu.html" data-ajax="false">란라이 분두</td><td>(X: 24, Y: 24)</td><td>Lv.57</td><td>-</td>
+					</tr>
+					<tr name="흉내지빠귀 우상|Lv.59||-" bgcolor="#FFFFFF" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/MockingbirdTotems.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/MockingbirdTotems.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/MockingbirdTotems.html" data-ajax="false">흉내지빠귀 우상</td><td>(X: 13, Y: 20)</td><td>Lv.59</td><td>-</td>
+					</tr>
+					<tr name="오사누와 분두|Lv.59||-" bgcolor="#F6F6F6" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/OSanuwaVundu.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/OSanuwaVundu.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/OSanuwaVundu.html" data-ajax="false">오사누와 분두</td><td>(X: 13, Y: 20)</td><td>Lv.59</td><td>-</td>
+					</tr>
+					<tr name="부크로이 분두|Lv.59||-" bgcolor="#FFFFFF" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/VukloiiVundu.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/VukloiiVundu.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/VukloiiVundu.html" data-ajax="false">부크로이 분두</td><td>(X: 13, Y: 20)</td><td>Lv.59</td><td>-</td>
+					</tr>
+					<tr name="나트로이 분두|Lv.59||-" bgcolor="#F6F6F6" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/NatloiiVundu.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/NatloiiVundu.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/NatloiiVundu.html" data-ajax="false">나트로이 분두</td><td>(X: 13, Y: 20)</td><td>Lv.59</td><td>-</td>
+					</tr>
+					<tr name="란로이 분두|Lv.59||-" bgcolor="#FFFFFF" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/LanloiiVundu.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/LanloiiVundu.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/LanloiiVundu.html" data-ajax="false">란로이 분두</td><td>(X: 13, Y: 20)</td><td>Lv.59</td><td>-</td>
+					</tr>
+					<tr name="안즈|Lv.59||-" bgcolor="#F6F6F6" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Anzu .gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Anzu.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/Anzu.html" data-ajax="false">안즈</td><td>(X: 21, Y: 7)</td><td>Lv.59</td><td>-</td>
+					</tr>
+					<tr name="차나할레|Lv.59||-" bgcolor="#FFFFFF" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Tsanahale.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Tsanahale.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/Tsanahale.html" data-ajax="false">차나할레</td><td>(X: 15, Y: 8)</td><td>Lv.59</td><td>-</td>
+					</tr>
+					<tr name="총총새|Lv.59||-" bgcolor="#F6F6F6" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/TocoToco.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/TocoToco.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/TocoToco.html" data-ajax="false">총총새</td><td>(X: 9, Y: 7)</td><td>Lv.59</td><td>-</td>
+					</tr>
+					<tr name="그리핀|Lv.59||-" bgcolor="#FFFFFF" onclick="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Griffin.gif'); return true;" 
+						onMouseOver="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds/Griffin.gif'); return true;" onMouseOut="changeImages('Sea_of_Clouds', 'image/map/Sea_of_Clouds.jpg'); return true;">
+						<td><a href="info/Sea_of_Clouds/Griffin.html" data-ajax="false">그리핀</td><td>(X: 35, Y: 9)</td><td>Lv.59</td><td>그리핀 발톱</br>그리핀 생가죽</td>
+					</tr>
+				</tbody>
+			</table>
+		</center>
+		</div>
+		</div>
+		</div>
+    <footer data-role="footer" data-position="fixed"><center>contact me : <a href="http://jaicy.tistory.com" target="_blank" data-ajax="false">jaicy.tistory.com</a></center></footer>
+		 <div data-role="panel" id="menuPanel" data-position="left" data-display="overlay" data-theme="a">
+		   </br>
+		   <ul data-role="listview">
+			<div style="text-align:right; margin-right:5px; padding-bottom:30px">
+				<a href="#" data-rel="close"><img src="./jqueryMobile/jquery.mobile-1.4.5/carat-l.png"/></a>
+			</div>
+		    <li data-role="collapsible" data-inset="false" data-iconpos="right">
+                <h2>라노시아</h2>
+                <ul data-role="listview" data-theme="b">
+                     <li><a href="Outher_La_Noscea.html" data-ajax="false">외지 라노시아</a></li>
+                     <li><a href="Upper_La_Noscea.html" data-ajax="false">고지 라노시아</a></li>
+                     <li><a href="Eastern_La_Noscea.html" data-ajax="false">동부 라노시아</a></li>
+					 <li><a href="Western_La_Noscea.html" data-ajax="false">서부 라노시아</a></li>
+					 <li><a href="Lower_La_Noscea.html" data-ajax="false">저지 라노시아</a></li>
+                </ul>
+            </li>
+			<li data-role="collapsible" data-inset="false" data-iconpos="right">
+                <h2>검은장막 숲</h2>
+                <ul data-role="listview" data-theme="b">
+                     <li><a href="North_Shroud.html" data-ajax="false">검은장막 숲 북부삼림</a></li>
+                     <li><a href="Central_Shroud.html" data-ajax="false">검은장막 숲 중부삼림</a></li>
+                     <li><a href="East_Shroud.html" data-ajax="false">검은장막 숲 동부삼림</a></li>
+					 <li><a href="South_Shroud.html" data-ajax="false">검은장막 숲 남부삼림</a></li>
+                </ul>
+            </li>
+			<li data-role="collapsible" data-inset="false" data-iconpos="right">
+                <h2>다날란</h2>
+                <ul data-role="listview" data-theme="b">
+                     <li><a href="Northern_Thanalan.html" data-ajax="false">북부 다날란</a></li>
+                     <li><a href="Central_Thanalan.html" data-ajax="false">중부 다날란</a></li>
+                     <li><a href="Eastern_Thanalan.html" data-ajax="false">동부 다날란</a></li>
+					 <li><a href="Western_Thanalan.html" data-ajax="false">서부 다날란</a></li>
+					 <li><a href="Southern_Thanalan.html" data-ajax="false">남부 다날란</a></li>
+				</ul>
+            </li>
+			<li data-role="collapsible" data-inset="false" data-iconpos="right">
+                <h2>커르다스</h2>
+                <ul data-role="listview" data-theme="b">
+                     <li><a href="Coerthas_Central_Highlands.html" data-ajax="flase">커르다스 중앙고지</a></li>
+                     <li><a href="Coerthas_Western_Highlands.html" data-ajax="false">커르다스 서부고지</a></li>
+                </ul>
+            </li>
+			<li>
+				<a href="Mor_Dhona.html" data-ajax="false">모르도나</a>
+            </li>
+			<li data-role="collapsible" data-inset="false" data-iconpos="right">
+                <h2>아발라시아</h2>
+                <ul data-role="listview" data-theme="b">
+                     <li><a href="Sea_of_Clouds.html" data-ajax="false">아발라시아 구름바다</a></li>
+                     <li><a href="Azys_Lla.html" data-ajax="false">아지스 라</a></li>
+                </ul>
+            </li>
+			<li data-role="collapsible" data-inset="false" data-iconpos="right">
+                <h2>드라바니아</h2>
+                <ul data-role="listview" data-theme="b">
+                     <li><a href="The_Churning_Mists.html" data-ajax="false">드라바니아 구름바다</a></li>
+                     <li><a href="Dravanian_Forelands.html" data-ajax="false">고지 드라바니아</a></li>
+					 <li><a href="The_Dravanian_Hinterlands.html" data-ajax="false">저지 드라바니아</a></li>
+                </ul>
+            </li>
+			</ul>
+		</div>
+</body>
+</html>
